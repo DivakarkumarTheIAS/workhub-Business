@@ -6,7 +6,7 @@ import { useDashboard } from "@/context/DashboardContext";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "sonner";
-import { Building2, Briefcase, User, Globe, FileText, CheckCircle2, Clock, XCircle, LayoutDashboard } from "lucide-react";
+import { Building2, Briefcase, User, Globe, FileText,  CheckCircle2, Clock, XCircle, LayoutDashboard } from "lucide-react";
 
 const BecomeOwner = () => {
     const navigate = useNavigate();
