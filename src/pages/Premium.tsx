@@ -4,18 +4,25 @@ import { motion } from "framer-motion";
 
 const plans = [
     {
-        name: "Professional",
-        price: "$49",
-        desc: "For serious individual contributors",
-        features: ["Unlimited Bids", "Priority Matching", "Advanced Analytics", "Verification Badge"],
+        name: "Starter",
+        price: "₹999",
+        desc: "Perfect for small businesses strating their hiring journey",
+        features: ["Basic Hiring Tool", "Limited Access", "Standard Support"],
         accent: "indigo"
     },
     {
-        name: "Enterprise",
-        price: "$199",
-        desc: "For growing organizations",
-        features: ["Dedicated Support", "API Access", "Team Management", "White-labeled Portfolios"],
+        name: "Growth",
+        price: "₹2,499",
+        desc: "Ideal for growing startups needing experts matching",
+        features: ["AI-powerered Matching", "Enhanced Analytics", "Priority Access"],
         accent: "emerald"
+    },
+    {
+        name: "Enterprise",
+        price: "₹6,999",
+        desc: "Full platform power for large scale organizations",
+        features: ["Full Platform Access", "Advanced Features", "24/7 Priority Support"],
+        accent: "indigo"
     }
 ];
 
@@ -59,7 +66,7 @@ const Premium = () => {
                         variants={container}
                         initial="hidden"
                         animate="show"
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-8"
                     >
                         {plans.map((plan) => (
                             <motion.div key={plan.name} variants={item}>

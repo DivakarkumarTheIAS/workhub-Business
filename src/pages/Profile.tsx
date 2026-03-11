@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDashboard } from "@/context/DashboardContext";
 import { PageTransition } from "@/components/PageTransition";
 import { Mail, MapPin, Phone, Globe, Edit3, ShieldCheck, Link as LinkIcon, Camera, Loader2, Save, X } from "lucide-react";
@@ -8,34 +9,14 @@ import { uploadFile } from "@/lib/storage";
 import { toast } from "sonner";
 
 const Profile = () => {
+    const navigate = useNavigate();
     const { user } = useDashboard();
-    const [isEditing, setIsEditing] = useState(false);
     const [uploading, setUploading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    // Edit State
-    const [editData, setEditData] = useState({
-        displayName: user?.displayName || "",
-        bio: user?.bio || "",
-        location: user?.location || "",
-        phoneNumber: user?.phoneNumber || ""
-    });
-
     if (!user) return null;
 
-    const handleSave = async () => {
-        setUploading(true);
-        try {
-            await updateDoc(doc(db, 'users', user.uid), editData);
-            setIsEditing(false);
-            toast.success("Profile updated successfully!");
-        } catch (err) {
-            console.error(err);
-            toast.error("Failed to update profile");
-        } finally {
-            setUploading(false);
-        }
-    };
+
 
     const joinedDate = user.createdAt
         ? new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
@@ -91,32 +72,13 @@ const Profile = () => {
 
                         <div className="flex-1 text-center md:text-left pt-2 space-y-4">
                             <div className="space-y-1">
-                                {isEditing ? (
-                                    <input
-                                        value={editData.displayName}
-                                        onChange={(e) => setEditData({ ...editData, displayName: e.target.value })}
-                                        className="text-3xl font-medium text-slate-900 tracking-tight bg-slate-50 border-0 rounded-xl px-4 py-2 w-full focus:ring-2 focus:ring-indigo-100 outline-none"
-                                        placeholder="Full Name"
-                                    />
-                                ) : (
-                                    <h1 className="text-3xl font-medium text-slate-900 tracking-tight">{user.displayName}</h1>
-                                )}
+                                <h1 className="text-3xl font-medium text-slate-900 tracking-tight">{user.displayName}</h1>
                                 <p className="text-sm font-medium text-indigo-600 uppercase tracking-widest">{user.subscriptionTier} Member</p>
                             </div>
 
-                            {isEditing ? (
-                                <textarea
-                                    value={editData.bio}
-                                    onChange={(e) => setEditData({ ...editData, bio: e.target.value })}
-                                    className="text-slate-500 max-w-lg leading-relaxed font-light bg-slate-50 border-0 rounded-xl px-4 py-2 w-full focus:ring-2 focus:ring-indigo-100 outline-none resize-none"
-                                    rows={3}
-                                    placeholder="Write a short professional summary..."
-                                />
-                            ) : (
-                                <p className="text-slate-500 max-w-lg leading-relaxed font-light">
-                                    {user.bio || "No professional summary provided yet."}
-                                </p>
-                            )}
+                            <p className="text-slate-500 max-w-lg leading-relaxed font-light">
+                                {user.bio || "No professional summary provided yet."}
+                            </p>
 
                             <div className="flex flex-wrap justify-center md:justify-start gap-4">
                                 <span className="flex items-center gap-2 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
@@ -130,41 +92,13 @@ const Profile = () => {
                             </div>
 
                             <div className="flex items-center justify-center md:justify-start gap-4 pt-4">
-                                {isEditing ? (
-                                    <>
-                                        <button
-                                            onClick={handleSave}
-                                            disabled={uploading}
-                                            className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl text-xs font-medium hover:bg-indigo-500 transition-all disabled:opacity-50"
-                                        >
-                                            {uploading ? <Loader2 className="size-3 animate-spin" /> : <Save className="size-3" />}
-                                            Save Changes
-                                        </button>
-                                        <button
-                                            onClick={() => setIsEditing(false)}
-                                            className="flex items-center gap-2 px-6 py-2.5 bg-slate-100 text-slate-600 rounded-xl text-xs font-medium hover:bg-slate-200 transition-all"
-                                        >
-                                            <X className="size-3" />
-                                            Cancel
-                                        </button>
-                                    </>
-                                ) : (
-                                    <button
-                                        onClick={() => {
-                                            setEditData({
-                                                displayName: user.displayName,
-                                                bio: user.bio || "",
-                                                location: user.location || "",
-                                                phoneNumber: user.phoneNumber || ""
-                                            });
-                                            setIsEditing(true);
-                                        }}
-                                        className="flex items-center gap-2 px-6 py-2.5 bg-[#191B2D] text-white rounded-xl text-xs font-medium hover:bg-slate-800 transition-all"
-                                    >
-                                        <Edit3 className="size-3" />
-                                        Edit Profile
-                                    </button>
-                                )}
+                                <button
+                                    onClick={() => navigate("/edit-profile")}
+                                    className="flex items-center gap-2 px-6 py-2.5 bg-[#191B2D] text-white rounded-xl text-xs font-medium hover:bg-slate-800 transition-all"
+                                >
+                                    <Edit3 className="size-3" />
+                                    Edit Profile
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -188,18 +122,9 @@ const Profile = () => {
                                     <div className="mt-1 size-9 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                                         <Phone className="size-4" />
                                     </div>
-                                    <div className="flex-1">
+                                    <div>
                                         <label className="text-[10px] font-medium text-slate-300 uppercase tracking-widest block mb-0.5">Contact Phone</label>
-                                        {isEditing ? (
-                                            <input
-                                                value={editData.phoneNumber}
-                                                onChange={(e) => setEditData({ ...editData, phoneNumber: e.target.value })}
-                                                className="text-sm font-medium text-slate-700 bg-slate-50 border-0 rounded-lg px-3 py-1 w-full focus:ring-2 focus:ring-indigo-100 outline-none"
-                                                placeholder="Phone Number"
-                                            />
-                                        ) : (
-                                            <span className="text-sm font-medium text-slate-700 transition-colors group-hover:text-slate-900">{user.phoneNumber || "Not provided"}</span>
-                                        )}
+                                        <span className="text-sm font-medium text-slate-700 transition-colors group-hover:text-slate-900">{user.phoneNumber || "Not provided"}</span>
                                     </div>
                                 </div>
 
@@ -207,18 +132,9 @@ const Profile = () => {
                                     <div className="mt-1 size-9 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                                         <MapPin className="size-4" />
                                     </div>
-                                    <div className="flex-1">
+                                    <div>
                                         <label className="text-[10px] font-medium text-slate-300 uppercase tracking-widest block mb-0.5">Base Office</label>
-                                        {isEditing ? (
-                                            <input
-                                                value={editData.location}
-                                                onChange={(e) => setEditData({ ...editData, location: e.target.value })}
-                                                className="text-sm font-medium text-slate-700 bg-slate-50 border-0 rounded-lg px-3 py-1 w-full focus:ring-2 focus:ring-indigo-100 outline-none"
-                                                placeholder="Location"
-                                            />
-                                        ) : (
-                                            <span className="text-sm font-medium text-slate-700 transition-colors group-hover:text-slate-900">{user.location || "Remote"}</span>
-                                        )}
+                                        <span className="text-sm font-medium text-slate-700 transition-colors group-hover:text-slate-900">{user.location || "Remote"}</span>
                                     </div>
                                 </div>
 

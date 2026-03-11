@@ -1,10 +1,12 @@
 import TopNavbar from "@/components/TopNavbar";
+import Footer from "@/components/Footer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/sonner";
 import Index from "@/pages/Index";
 import JobHub from "@/pages/JobHub";
 import FreelanceHub from "@/pages/FreelanceHub";
 import Profile from "@/pages/Profile";
+import EditProfile from "@/pages/EditProfile";
 import Settings from "@/pages/Settings";
 import Premium from "@/pages/Premium";
 import CreateJob from "@/pages/CreateJob";
@@ -66,6 +68,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const AppContent = () => {
   const location = useLocation();
   const showNavbar = location.pathname !== "/login";
+  const showFooter = location.pathname !== "/login";
 
   return (
     <div className="min-h-screen w-full bg-background flex flex-col">
@@ -83,6 +86,7 @@ const AppContent = () => {
           <Route path="/talents/freelance/create" element={<ProtectedRoute><CreateProject /></ProtectedRoute>} />
           <Route path="/talents/freelance/:id" element={<ProtectedRoute><ProjectDetails /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/edit-profile" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="/become-owner" element={<ProtectedRoute><BecomeOwner /></ProtectedRoute>} />
           <Route path="/premium" element={<ProtectedRoute><Premium /></ProtectedRoute>} />
@@ -90,6 +94,7 @@ const AppContent = () => {
           <Route path="*" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
         </Routes>
       </main>
+      {showFooter && <Footer />}
       <Toaster position="top-center" />
     </div>
   );
