@@ -1,0 +1,2327 @@
+================================================================================
+                        TALENTFLOW - PROJECT SOURCE CODE
+================================================================================
+
+================================================================================
+                              FILE STRUCTURE
+================================================================================
+
+├── index.html
+├── package.json
+├── postcss.config.js
+├── eslint.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── vite.config.ts
+├── vitest.config.ts
+├── components.json
+├── public/
+│   ├── favicon.ico
+│   ├── placeholder.svg
+│   └── robots.txt
+├── src/
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── App.css
+│   ├── index.css
+│   ├── vite-env.d.ts
+│   ├── lib/
+│   │   └── utils.ts
+│   ├── hooks/
+│   │   ├── use-mobile.tsx
+│   │   └── use-toast.ts
+│   ├── test/
+│   │   ├── setup.ts
+│   │   └── example.test.ts
+│   ├── pages/
+│   │   ├── Index.tsx
+│   │   ├── JobHub.tsx
+│   │   ├── FreelanceHub.tsx
+│   │   ├── Profile.tsx
+│   │   └── NotFound.tsx
+│   ├── components/
+│   │   ├── AppSidebar.tsx
+│   │   ├── ClayCard.tsx
+│   │   ├── ComplianceCard.tsx
+│   │   ├── FolderCard.tsx
+│   │   ├── NavLink.tsx
+│   │   ├── PageTransition.tsx
+│   │   ├── RecentFilesTable.tsx
+│   │   ├── StorageCard.tsx
+│   │   ├── TopNavbar.tsx
+│   │   └── ui/
+│   │       ├── accordion.tsx
+│   │       ├── alert-dialog.tsx
+│   │       ├── alert.tsx
+│   │       ├── aspect-ratio.tsx
+│   │       ├── avatar.tsx
+│   │       ├── badge.tsx
+│   │       ├── breadcrumb.tsx
+│   │       ├── button.tsx
+│   │       ├── calendar.tsx
+│   │       ├── card.tsx
+│   │       ├── carousel.tsx
+│   │       ├── chart.tsx
+│   │       ├── checkbox.tsx
+│   │       ├── collapsible.tsx
+│   │       ├── command.tsx
+│   │       ├── context-menu.tsx
+│   │       ├── dialog.tsx
+│   │       ├── drawer.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── form.tsx
+│   │       ├── hover-card.tsx
+│   │       ├── input-otp.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── menubar.tsx
+│   │       ├── navigation-menu.tsx
+│   │       ├── pagination.tsx
+│   │       ├── popover.tsx
+│   │       ├── progress.tsx
+│   │       ├── radio-group.tsx
+│   │       ├── resizable.tsx
+│   │       ├── scroll-area.tsx
+│   │       ├── select.tsx
+│   │       ├── separator.tsx
+│   │       ├── sheet.tsx
+│   │       ├── sidebar.tsx
+│   │       ├── skeleton.tsx
+│   │       ├── slider.tsx
+│   │       ├── sonner.tsx
+│   │       ├── switch.tsx
+│   │       ├── table.tsx
+│   │       ├── tabs.tsx
+│   │       ├── textarea.tsx
+│   │       ├── toast.tsx
+│   │       ├── toaster.tsx
+│   │       ├── toggle-group.tsx
+│   │       ├── toggle.tsx
+│   │       ├── tooltip.tsx
+│   │       └── use-toast.ts
+
+
+================================================================================
+                              FILE CONTENTS
+================================================================================
+
+
+================================================================================
+File: index.html
+================================================================================
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lovable App</title>
+    <meta name="description" content="Lovable Generated Project">
+    <meta name="author" content="Lovable" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f5d52bc5-b5a1-4ab6-b992-df2ca76e6268/id-preview-10ddabd0--8e19e146-df1c-408e-8aa0-5e0d99511d0d.lovable.app-1772450060273.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f5d52bc5-b5a1-4ab6-b992-df2ca76e6268/id-preview-10ddabd0--8e19e146-df1c-408e-8aa0-5e0d99511d0d.lovable.app-1772450060273.png">
+    <meta property="og:title" content="Lovable App">
+    <meta name="twitter:title" content="Lovable App">
+    <meta property="og:description" content="Lovable Generated Project">
+    <meta name="twitter:description" content="Lovable Generated Project">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+================================================================================
+File: package.json
+================================================================================
+{
+  "name": "vite_react_shadcn_ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-alert-dialog": "^1.1.14",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-checkbox": "^1.3.2",
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-context-menu": "^2.2.15",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-hover-card": "^1.1.14",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-menubar": "^1.1.15",
+    "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-radio-group": "^1.3.7",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-select": "^2.2.5",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.5",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.5",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@radix-ui/react-toast": "^1.2.14",
+    "@radix-ui/react-toggle": "^1.1.9",
+    "@radix-ui/react-toggle-group": "^1.1.10",
+    "@radix-ui/react-tooltip": "^1.2.7",
+    "@tanstack/react-query": "^5.83.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^3.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.34.3",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.462.0",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.61.1",
+    "react-resizable-panels": "^2.1.9",
+    "react-router-dom": "^6.30.1",
+    "recharts": "^2.15.4",
+    "sonner": "^1.7.4",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.9.9",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^22.16.5",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react-swc": "^3.11.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.32.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^15.15.0",
+    "jsdom": "^20.0.3",
+    "lovable-tagger": "^1.1.13",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0",
+    "vite": "^5.4.19",
+    "vitest": "^3.2.4"
+  }
+}
+
+
+================================================================================
+File: postcss.config.js
+================================================================================
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+
+================================================================================
+File: eslint.config.js
+================================================================================
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  { ignores: ["dist"] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+);
+
+
+================================================================================
+File: tailwind.config.ts
+================================================================================
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class"],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        storage: {
+          DEFAULT: "hsl(var(--storage-bg))",
+          foreground: "hsl(var(--storage-fg))",
+        },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
+
+
+================================================================================
+File: tsconfig.json
+================================================================================
+{
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": false
+  }
+}
+
+
+================================================================================
+File: tsconfig.app.json
+================================================================================
+{
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
+
+
+================================================================================
+File: tsconfig.node.json
+================================================================================
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+
+================================================================================
+File: vite.config.ts
+================================================================================
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+import { componentTagger } from "lovable-tagger";
+
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+    hmr: {
+      overlay: false,
+    },
+  },
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
+
+
+================================================================================
+File: vitest.config.ts
+================================================================================
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["./src/test/setup.ts"],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+  },
+  resolve: {
+    alias: { "@": path.resolve(__dirname, "./src") },
+  },
+});
+
+
+================================================================================
+File: components.json
+================================================================================
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
+}
+
+
+================================================================================
+File: public/robots.txt
+================================================================================
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+
+
+================================================================================
+File: src/main.tsx
+================================================================================
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+
+createRoot(document.getElementById("root")!).render(<App />);
+
+
+================================================================================
+File: src/App.tsx
+================================================================================
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TopNavbar from "@/components/TopNavbar";
+import Index from "./pages/Index";
+import JobHub from "./pages/JobHub";
+import FreelanceHub from "./pages/FreelanceHub";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col w-full">
+          <TopNavbar />
+          <main className="flex-1 bg-background">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/talents/jobs" element={<JobHub />} />
+              <Route path="/talents/freelance" element={<FreelanceHub />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;
+
+
+================================================================================
+File: src/App.css
+================================================================================
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+================================================================================
+File: src/index.css
+================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 95%;
+    --foreground: 230 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 15%;
+
+    --primary: 250 70% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 60% 92%;
+    --secondary-foreground: 230 25% 15%;
+
+    --muted: 230 20% 92%;
+    --muted-foreground: 230 15% 50%;
+
+    --accent: 340 65% 62%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 155 60% 48%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 58%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 230 20% 88%;
+    --input: 230 20% 88%;
+    --ring: 250 70% 58%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 250 30% 97%;
+    --sidebar-foreground: 230 25% 30%;
+    --sidebar-primary: 250 70% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 40% 94%;
+    --sidebar-accent-foreground: 250 70% 45%;
+    --sidebar-border: 230 20% 90%;
+    --sidebar-ring: 250 70% 58%;
+
+    --storage-bg: 250 30% 22%;
+    --storage-fg: 250 20% 90%;
+
+    --clay-shadow: 8px 8px 16px hsl(230 25% 85%), -4px -4px 12px hsl(0 0% 100%);
+    --clay-shadow-sm: 4px 4px 8px hsl(230 25% 87%), -2px -2px 6px hsl(0 0% 100%);
+    --clay-shadow-hover: 10px 10px 20px hsl(230 25% 82%), -6px -6px 16px hsl(0 0% 100%);
+    --clay-inner: inset 2px 2px 4px hsl(230 25% 88%), inset -2px -2px 4px hsl(0 0% 100%);
+  }
+
+  .dark {
+    --background: 230 25% 10%;
+    --foreground: 230 15% 90%;
+    --card: 230 25% 14%;
+    --card-foreground: 230 15% 90%;
+    --popover: 230 25% 14%;
+    --popover-foreground: 230 15% 90%;
+    --primary: 250 70% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 25% 18%;
+    --secondary-foreground: 230 15% 90%;
+    --muted: 230 25% 18%;
+    --muted-foreground: 230 15% 60%;
+    --accent: 340 65% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 25% 20%;
+    --input: 230 25% 20%;
+    --ring: 250 70% 62%;
+    --sidebar-background: 230 25% 12%;
+    --sidebar-foreground: 230 15% 80%;
+    --sidebar-primary: 250 70% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 30% 20%;
+    --sidebar-accent-foreground: 250 60% 75%;
+    --sidebar-border: 230 25% 18%;
+    --sidebar-ring: 250 70% 62%;
+    --storage-bg: 250 30% 16%;
+    --storage-fg: 250 20% 85%;
+
+    --clay-shadow: 6px 6px 12px hsl(230 25% 6%), -3px -3px 8px hsl(230 25% 18%);
+    --clay-shadow-sm: 3px 3px 6px hsl(230 25% 6%), -2px -2px 4px hsl(230 25% 18%);
+    --clay-shadow-hover: 8px 8px 16px hsl(230 25% 5%), -4px -4px 10px hsl(230 25% 20%);
+    --clay-inner: inset 2px 2px 4px hsl(230 25% 8%), inset -2px -2px 4px hsl(230 25% 18%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer components {
+  .clay-card {
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--clay-shadow);
+    border: 1px solid hsl(var(--border) / 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .clay-card:hover {
+    box-shadow: var(--clay-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .clay-card-sm {
+    background: hsl(var(--card));
+    border-radius: calc(var(--radius) - 2px);
+    box-shadow: var(--clay-shadow-sm);
+    border: 1px solid hsl(var(--border) / 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .clay-card-sm:hover {
+    box-shadow: var(--clay-shadow);
+    transform: translateY(-1px);
+  }
+
+  .clay-inset {
+    box-shadow: var(--clay-inner);
+    border-radius: calc(var(--radius) - 4px);
+    background: hsl(var(--muted) / 0.5);
+  }
+
+  .clay-button {
+    box-shadow: var(--clay-shadow-sm);
+    border-radius: calc(var(--radius) - 2px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .clay-button:hover {
+    box-shadow: var(--clay-shadow);
+    transform: translateY(-1px);
+  }
+
+  .clay-button:active {
+    box-shadow: var(--clay-inner);
+    transform: translateY(0);
+  }
+}
+
+
+================================================================================
+File: src/vite-env.d.ts
+================================================================================
+/// <reference types="vite/client" />
+
+
+================================================================================
+File: src/lib/utils.ts
+================================================================================
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+
+================================================================================
+File: src/hooks/use-mobile.tsx
+================================================================================
+import * as React from "react";
+
+const MOBILE_BREAKPOINT = 768;
+
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined);
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return !!isMobile;
+}
+
+
+================================================================================
+File: src/hooks/use-toast.ts
+================================================================================
+import * as React from "react";
+
+import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
+
+const TOAST_LIMIT = 1;
+const TOAST_REMOVE_DELAY = 1000000;
+
+type ToasterToast = ToastProps & {
+  id: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  action?: ToastActionElement;
+};
+
+const actionTypes = {
+  ADD_TOAST: "ADD_TOAST",
+  UPDATE_TOAST: "UPDATE_TOAST",
+  DISMISS_TOAST: "DISMISS_TOAST",
+  REMOVE_TOAST: "REMOVE_TOAST",
+} as const;
+
+let count = 0;
+
+function genId() {
+  count = (count + 1) % Number.MAX_SAFE_INTEGER;
+  return count.toString();
+}
+
+type ActionType = typeof actionTypes;
+
+type Action =
+  | {
+      type: ActionType["ADD_TOAST"];
+      toast: ToasterToast;
+    }
+  | {
+      type: ActionType["UPDATE_TOAST"];
+      toast: Partial<ToasterToast>;
+    }
+  | {
+      type: ActionType["DISMISS_TOAST"];
+      toastId?: ToasterToast["id"];
+    }
+  | {
+      type: ActionType["REMOVE_TOAST"];
+      toastId?: ToasterToast["id"];
+    };
+
+interface State {
+  toasts: ToasterToast[];
+}
+
+const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
+
+const addToRemoveQueue = (toastId: string) => {
+  if (toastTimeouts.has(toastId)) {
+    return;
+  }
+
+  const timeout = setTimeout(() => {
+    toastTimeouts.delete(toastId);
+    dispatch({
+      type: "REMOVE_TOAST",
+      toastId: toastId,
+    });
+  }, TOAST_REMOVE_DELAY);
+
+  toastTimeouts.set(toastId, timeout);
+};
+
+export const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "ADD_TOAST":
+      return {
+        ...state,
+        toasts: [action.toast, ...state.toasts].slice(0, TOAST_LIMIT),
+      };
+
+    case "UPDATE_TOAST":
+      return {
+        ...state,
+        toasts: state.toasts.map((t) => (t.id === action.toast.id ? { ...t, ...action.toast } : t)),
+      };
+
+    case "DISMISS_TOAST": {
+      const { toastId } = action;
+
+      if (toastId) {
+        addToRemoveQueue(toastId);
+      } else {
+        state.toasts.forEach((toast) => {
+          addToRemoveQueue(toast.id);
+        });
+      }
+
+      return {
+        ...state,
+        toasts: state.toasts.map((t) =>
+          t.id === toastId || toastId === undefined
+            ? {
+                ...t,
+                open: false,
+              }
+            : t,
+        ),
+      };
+    }
+    case "REMOVE_TOAST":
+      if (action.toastId === undefined) {
+        return {
+          ...state,
+          toasts: [],
+        };
+      }
+      return {
+        ...state,
+        toasts: state.toasts.filter((t) => t.id !== action.toastId),
+      };
+  }
+};
+
+const listeners: Array<(state: State) => void> = [];
+
+let memoryState: State = { toasts: [] };
+
+function dispatch(action: Action) {
+  memoryState = reducer(memoryState, action);
+  listeners.forEach((listener) => {
+    listener(memoryState);
+  });
+}
+
+type Toast = Omit<ToasterToast, "id">;
+
+function toast({ ...props }: Toast) {
+  const id = genId();
+
+  const update = (props: ToasterToast) =>
+    dispatch({
+      type: "UPDATE_TOAST",
+      toast: { ...props, id },
+    });
+  const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
+
+  dispatch({
+    type: "ADD_TOAST",
+    toast: {
+      ...props,
+      id,
+      open: true,
+      onOpenChange: (open) => {
+        if (!open) dismiss();
+      },
+    },
+  });
+
+  return {
+    id: id,
+    dismiss,
+    update,
+  };
+}
+
+function useToast() {
+  const [state, setState] = React.useState<State>(memoryState);
+
+  React.useEffect(() => {
+    listeners.push(setState);
+    return () => {
+      const index = listeners.indexOf(setState);
+      if (index > -1) {
+        listeners.splice(index, 1);
+      }
+    };
+  }, [state]);
+
+  return {
+    ...state,
+    toast,
+    dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
+  };
+}
+
+export { useToast, toast };
+
+
+================================================================================
+File: src/test/setup.ts
+================================================================================
+import "@testing-library/jest-dom";
+
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: (query: string) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => {},
+  }),
+});
+
+
+================================================================================
+File: src/test/example.test.ts
+================================================================================
+import { describe, it, expect } from "vitest";
+
+describe("example", () => {
+  it("should pass", () => {
+    expect(true).toBe(true);
+  });
+});
+
+
+================================================================================
+File: src/pages/Index.tsx
+================================================================================
+import { Users, Briefcase, TrendingUp, DollarSign, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import PageTransition from "@/components/PageTransition";
+import ClayCard from "@/components/ClayCard";
+import { motion } from "framer-motion";
+import ComplianceCard from "@/components/ComplianceCard";
+import StorageCard from "@/components/StorageCard";
+import RecentFilesTable from "@/components/RecentFilesTable";
+
+const stats = [
+  { label: "Total Talents", value: "2,847", change: "+12.5%", up: true, icon: Users, color: "bg-primary/15 text-primary" },
+  { label: "Active Jobs", value: "184", change: "+8.2%", up: true, icon: Briefcase, color: "bg-success/15 text-success" },
+  { label: "Conversion Rate", value: "64.7%", change: "-2.1%", up: false, icon: TrendingUp, color: "bg-warning/15 text-warning" },
+  { label: "Revenue", value: "$48.2K", change: "+18.4%", up: true, icon: DollarSign, color: "bg-accent/15 text-accent" },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const Index = () => {
+  return (
+    <PageTransition>
+      <div className="px-6 py-6 max-w-[1400px] mx-auto">
+        {/* Hero section with illustration */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 flex items-center justify-between"
+        >
+          <div>
+            <h1 className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+              Dashboard
+            </h1>
+            <p className="text-sm text-muted-foreground mt-1">Welcome back, Anna! Here's your overview.</p>
+          </div>
+          <motion.img
+            src="https://cdn.lordicon.com/lupuorrc.json"
+            alt=""
+            className="w-0 h-0 hidden"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:block"
+          >
+            <img
+              src="https://illustrations.popsy.co/amber/remote-work.svg"
+              alt="Dashboard illustration"
+              className="w-32 h-32 object-contain opacity-90"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Stats row */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"
+        >
+          {stats.map((s, i) => (
+            <motion.div key={s.label} variants={item}>
+              <ClayCard delay={0} className="group">
+                <div className="flex items-start justify-between">
+                  <motion.div
+                    whileHover={{ rotate: 12, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className={`p-2.5 rounded-xl ${s.color}`}
+                  >
+                    <s.icon className="w-5 h-5" />
+                  </motion.div>
+                  <span className={`flex items-center gap-0.5 text-xs font-semibold ${s.up ? "text-success" : "text-destructive"}`}>
+                    {s.up ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
+                    {s.change}
+                  </span>
+                </div>
+                <motion.p
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 + i * 0.1, type: "spring", stiffness: 200 }}
+                  className="text-2xl font-bold text-foreground mt-3"
+                >
+                  {s.value}
+                </motion.p>
+                <p className="text-xs text-muted-foreground mt-0.5">{s.label}</p>
+              </ClayCard>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Main grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-5">
+          <div className="flex flex-col gap-5">
+            <RecentFilesTable />
+          </div>
+          <div className="flex flex-col gap-5">
+            <ComplianceCard />
+            <StorageCard />
+          </div>
+        </div>
+      </div>
+    </PageTransition>
+  );
+};
+
+export default Index;
+
+
+================================================================================
+File: src/pages/JobHub.tsx
+================================================================================
+import PageTransition from "@/components/PageTransition";
+import ClayCard from "@/components/ClayCard";
+import { Briefcase, MapPin, Clock, DollarSign, Users, Search } from "lucide-react";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+
+const jobs = [
+  { title: "Senior React Developer", company: "TechFlow Inc.", location: "Remote", salary: "$120K-$160K", type: "Full-time", applicants: 34, posted: "2 days ago", hot: true },
+  { title: "UX Designer", company: "DesignCraft", location: "New York, NY", salary: "$90K-$120K", type: "Full-time", applicants: 22, posted: "3 days ago", hot: false },
+  { title: "Backend Engineer", company: "DataStream", location: "San Francisco, CA", salary: "$130K-$170K", type: "Full-time", applicants: 18, posted: "1 day ago", hot: true },
+  { title: "Product Manager", company: "InnovateLab", location: "Austin, TX", salary: "$110K-$140K", type: "Full-time", applicants: 45, posted: "5 days ago", hot: false },
+  { title: "DevOps Engineer", company: "CloudScale", location: "Remote", salary: "$115K-$150K", type: "Contract", applicants: 12, posted: "4 hours ago", hot: true },
+  { title: "Data Scientist", company: "InsightAI", location: "Boston, MA", salary: "$125K-$165K", type: "Full-time", applicants: 28, posted: "1 week ago", hot: false },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.2 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const JobHub = () => {
+  return (
+    <PageTransition>
+      <div className="px-6 py-6 max-w-[1400px] mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+            <h1 className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+              Job Hub
+            </h1>
+            <p className="text-sm text-muted-foreground mt-1">Browse and manage job listings</p>
+          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.img
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              src="https://illustrations.popsy.co/amber/man-working-on-laptop.svg"
+              alt="Job search"
+              className="w-24 h-24 object-contain hidden md:block opacity-85"
+            />
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              className="clay-button px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold"
+            >
+              + Post Job
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Search bar */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+          <ClayCard className="mb-6 !p-3 flex items-center gap-3">
+            <div className="clay-inset flex items-center gap-2 px-3 py-2 flex-1">
+              <Search className="w-4 h-4 text-muted-foreground" />
+              <input placeholder="Search jobs by title, company, or skill..." className="bg-transparent text-sm outline-none w-full placeholder:text-muted-foreground" />
+            </div>
+            <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="clay-button px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium">
+              Search
+            </motion.button>
+          </ClayCard>
+        </motion.div>
+
+        {/* Jobs grid */}
+        <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {jobs.map((job) => (
+            <motion.div key={job.title} variants={item}>
+              <ClayCard delay={0} className="cursor-pointer group">
+                <div className="flex items-start justify-between mb-3">
+                  <motion.div
+                    whileHover={{ rotate: -8, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="clay-inset p-2.5 rounded-xl"
+                  >
+                    <Briefcase className="w-5 h-5 text-primary" />
+                  </motion.div>
+                  {job.hot && (
+                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500 }}>
+                      <Badge className="bg-accent/15 text-accent border-0 text-[10px] font-semibold">🔥 Hot</Badge>
+                    </motion.div>
+                  )}
+                </div>
+                <h3 className="font-bold text-foreground text-sm group-hover:text-primary transition-colors">{job.title}</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">{job.company}</p>
+
+                <div className="flex flex-wrap gap-2 mt-3">
+                  <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <MapPin className="w-3 h-3" /> {job.location}
+                  </span>
+                  <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <DollarSign className="w-3 h-3" /> {job.salary}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between mt-4 pt-3 border-t border-border">
+                  <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <Users className="w-3 h-3" /> {job.applicants} applicants
+                  </span>
+                  <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <Clock className="w-3 h-3" /> {job.posted}
+                  </span>
+                </div>
+              </ClayCard>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </PageTransition>
+  );
+};
+
+export default JobHub;
+
+
+================================================================================
+File: src/pages/FreelanceHub.tsx
+================================================================================
+import PageTransition from "@/components/PageTransition";
+import ClayCard from "@/components/ClayCard";
+import { Globe, Star, MapPin, Clock, DollarSign } from "lucide-react";
+import { motion } from "framer-motion";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+
+const freelancers = [
+  { name: "Sarah Chen", role: "Full-Stack Developer", avatar: "SC", rate: "$85/hr", rating: 4.9, jobs: 127, location: "Singapore", skills: ["React", "Node.js", "AWS"], availability: 80 },
+  { name: "Alex Rivera", role: "UI/UX Designer", avatar: "AR", rate: "$70/hr", rating: 4.8, jobs: 94, location: "Barcelona", skills: ["Figma", "Sketch", "CSS"], availability: 60 },
+  { name: "James Park", role: "Data Engineer", avatar: "JP", rate: "$95/hr", rating: 4.7, jobs: 68, location: "Seoul", skills: ["Python", "Spark", "SQL"], availability: 100 },
+  { name: "Emma Wilson", role: "Mobile Developer", avatar: "EW", rate: "$90/hr", rating: 5.0, jobs: 156, location: "London", skills: ["React Native", "Swift", "Kotlin"], availability: 40 },
+  { name: "Raj Patel", role: "DevOps Specialist", avatar: "RP", rate: "$100/hr", rating: 4.6, jobs: 82, location: "Mumbai", skills: ["Docker", "K8s", "Terraform"], availability: 90 },
+  { name: "Lisa Zhang", role: "ML Engineer", avatar: "LZ", rate: "$110/hr", rating: 4.9, jobs: 53, location: "Toronto", skills: ["PyTorch", "TensorFlow", "Python"], availability: 70 },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const FreelanceHub = () => {
+  return (
+    <PageTransition>
+      <div className="px-6 py-6 max-w-[1400px] mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+            <h1 className="text-2xl font-bold text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+              Freelance Hub
+            </h1>
+            <p className="text-sm text-muted-foreground mt-1">Discover and hire top freelancers</p>
+          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.img
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              src="https://illustrations.popsy.co/amber/creative-work.svg"
+              alt="Freelance work"
+              className="w-24 h-24 object-contain hidden md:block opacity-85"
+            />
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="clay-button px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold"
+            >
+              + Post Project
+            </motion.button>
+          </div>
+        </div>
+
+        <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {freelancers.map((f) => (
+            <motion.div key={f.name} variants={item}>
+              <ClayCard delay={0} className="cursor-pointer group">
+                <div className="flex items-center gap-3 mb-4">
+                  <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 400 }}>
+                    <Avatar className="h-11 w-11 clay-card-sm">
+                      <AvatarFallback className="bg-primary/10 text-primary font-bold text-sm">{f.avatar}</AvatarFallback>
+                    </Avatar>
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-foreground text-sm group-hover:text-primary transition-colors">{f.name}</h3>
+                    <p className="text-xs text-muted-foreground">{f.role}</p>
+                  </div>
+                  <motion.span
+                    whileHover={{ scale: 1.15 }}
+                    className="flex items-center gap-0.5 text-xs font-semibold text-warning"
+                  >
+                    <Star className="w-3.5 h-3.5 fill-warning" /> {f.rating}
+                  </motion.span>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {f.skills.map((s) => (
+                    <Badge key={s} variant="secondary" className="clay-inset text-[10px] font-medium border-0 px-2 py-0.5">{s}</Badge>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-3">
+                  <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {f.location}</span>
+                  <span className="flex items-center gap-1"><DollarSign className="w-3 h-3" /> {f.rate}</span>
+                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {f.jobs} jobs</span>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between text-[11px] mb-1.5">
+                    <span className="text-muted-foreground">Availability</span>
+                    <span className="font-semibold text-foreground">{f.availability}%</span>
+                  </div>
+                  <div className="clay-inset p-0.5 rounded-full">
+                    <Progress value={f.availability} className="h-2 rounded-full" />
+                  </div>
+                </div>
+              </ClayCard>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </PageTransition>
+  );
+};
+
+export default FreelanceHub;
+
+
+================================================================================
+File: src/pages/Profile.tsx
+================================================================================
+import PageTransition from "@/components/PageTransition";
+import ClayCard from "@/components/ClayCard";
+import { Mail, Phone, MapPin, Bell, Shield, Palette, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Switch } from "@/components/ui/switch";
+
+const settings = [
+  { icon: Bell, label: "Email Notifications", desc: "Receive email updates for new matches", enabled: true },
+  { icon: Shield, label: "Two-Factor Auth", desc: "Add extra security to your account", enabled: false },
+  { icon: Palette, label: "Dark Mode", desc: "Switch between light and dark themes", enabled: false },
+  { icon: Globe, label: "Public Profile", desc: "Allow others to find and view your profile", enabled: true },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+};
+
+const item = {
+  hidden: { opacity: 0, x: 20 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const Profile = () => {
+  return (
+    <PageTransition>
+      <div className="px-6 py-6 max-w-[1400px] mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-2xl font-bold text-foreground"
+            style={{ fontFamily: "'Quicksand', sans-serif" }}
+          >
+            Profile & Settings
+          </motion.h1>
+          <motion.img
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            src="https://illustrations.popsy.co/amber/app-launch.svg"
+            alt="Settings"
+            className="w-24 h-24 object-contain hidden md:block opacity-85"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-6">
+          {/* Profile card */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            <ClayCard className="text-center">
+              <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+                <Avatar className="h-20 w-20 mx-auto mb-4 clay-card-sm ring-4 ring-primary/10">
+                  <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=face" />
+                  <AvatarFallback className="text-lg font-bold bg-primary/10 text-primary">AD</AvatarFallback>
+                </Avatar>
+              </motion.div>
+              <h2 className="text-lg font-bold text-foreground">Anna Deynah</h2>
+              <p className="text-sm text-muted-foreground mb-4">Talent Manager</p>
+
+              <div className="space-y-3 text-left">
+                {[
+                  { icon: Mail, value: "anna.d@talentflow.com" },
+                  { icon: Phone, value: "+1 (555) 234-5678" },
+                  { icon: MapPin, value: "San Francisco, CA" },
+                ].map((i) => (
+                  <motion.div key={i.value} whileHover={{ x: 4 }} className="clay-inset flex items-center gap-3 px-3 py-2.5 rounded-xl">
+                    <i.icon className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm text-foreground">{i.value}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="clay-button w-full mt-5 px-4 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-semibold"
+              >
+                Edit Profile
+              </motion.button>
+            </ClayCard>
+          </motion.div>
+
+          {/* Settings */}
+          <div className="flex flex-col gap-4">
+            <ClayCard delay={0.1}>
+              <h3 className="font-bold text-foreground mb-4" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+                Settings
+              </h3>
+              <motion.div variants={container} initial="hidden" animate="show" className="space-y-1">
+                {settings.map((s) => (
+                  <motion.div
+                    key={s.label}
+                    variants={item}
+                    whileHover={{ x: 4, transition: { duration: 0.15 } }}
+                    className="clay-inset flex items-center gap-4 px-4 py-3.5 rounded-xl"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 12 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                      className="p-2 rounded-lg bg-primary/10"
+                    >
+                      <s.icon className="w-4 h-4 text-primary" />
+                    </motion.div>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-foreground">{s.label}</p>
+                      <p className="text-xs text-muted-foreground">{s.desc}</p>
+                    </div>
+                    <Switch defaultChecked={s.enabled} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </ClayCard>
+
+            <ClayCard delay={0.2}>
+              <h3 className="font-bold text-foreground mb-3" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+                Activity Summary
+              </h3>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { label: "Jobs Posted", value: "24" },
+                  { label: "Hired", value: "18" },
+                  { label: "Active Projects", value: "7" },
+                ].map((a, i) => (
+                  <motion.div
+                    key={a.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4 + i * 0.1, type: "spring", stiffness: 200 }}
+                    whileHover={{ y: -3, transition: { duration: 0.15 } }}
+                    className="clay-inset text-center p-4 rounded-xl"
+                  >
+                    <p className="text-2xl font-bold text-foreground">{a.value}</p>
+                    <p className="text-[11px] text-muted-foreground mt-1">{a.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </ClayCard>
+          </div>
+        </div>
+      </div>
+    </PageTransition>
+  );
+};
+
+export default Profile;
+
+
+================================================================================
+File: src/pages/NotFound.tsx
+================================================================================
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+const NotFound = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+  }, [location.pathname]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-muted">
+      <div className="text-center">
+        <h1 className="mb-4 text-4xl font-bold">404</h1>
+        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+        <a href="/" className="text-primary underline hover:text-primary/90">
+          Return to Home
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default NotFound;
+
+
+================================================================================
+File: src/components/TopNavbar.tsx
+================================================================================
+import { Bell, Moon, Sun, Search, LayoutDashboard, Users, Briefcase, Globe, User, ChevronDown } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { NavLink } from "@/components/NavLink";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const TopNavbar = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark");
+  };
+
+  return (
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="flex items-center justify-between px-6 py-3 border-b border-border bg-card/80 backdrop-blur-xl sticky top-0 z-50"
+    >
+      {/* Logo + Nav */}
+      <div className="flex items-center gap-6">
+        <motion.div
+          className="flex items-center gap-2.5"
+          whileHover={{ scale: 1.02 }}
+        >
+          <motion.div
+            className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center clay-button"
+            whileHover={{ rotate: 12 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <span className="text-primary-foreground font-extrabold text-sm">TF</span>
+          </motion.div>
+          <span className="font-bold text-lg text-foreground hidden sm:block" style={{ fontFamily: "'Quicksand', sans-serif" }}>
+            TalentFlow
+          </span>
+        </motion.div>
+
+        <nav className="hidden md:flex items-center gap-1">
+          <NavLink
+            to="/"
+            end
+            className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-muted/50"
+            activeClassName="text-foreground bg-muted/70 clay-card-sm font-semibold"
+          >
+            <LayoutDashboard className="w-4 h-4" />
+            Dashboard
+          </NavLink>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-muted/50"
+              >
+                <Users className="w-4 h-4" />
+                Talents Hub
+                <ChevronDown className="w-3 h-3" />
+              </motion.button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="clay-card border-border/50 p-1.5 min-w-[180px]">
+              <DropdownMenuItem asChild className="rounded-lg cursor-pointer">
+                <NavLink to="/talents/jobs" className="flex items-center gap-2.5 px-3 py-2.5 text-sm" activeClassName="font-semibold text-primary">
+                  <Briefcase className="w-4 h-4" />
+                  Job Hub
+                </NavLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="rounded-lg cursor-pointer">
+                <NavLink to="/talents/freelance" className="flex items-center gap-2.5 px-3 py-2.5 text-sm" activeClassName="font-semibold text-primary">
+                  <Globe className="w-4 h-4" />
+                  Freelance Hub
+                </NavLink>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <NavLink
+            to="/profile"
+            className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-muted/50"
+            activeClassName="text-foreground bg-muted/70 clay-card-sm font-semibold"
+          >
+            <User className="w-4 h-4" />
+            Profile
+          </NavLink>
+        </nav>
+      </div>
+
+      {/* Right side */}
+      <div className="flex items-center gap-2.5">
+        <motion.div
+          animate={{ width: searchFocused ? 220 : 180 }}
+          className="clay-inset flex items-center gap-2 px-3 py-2 rounded-xl hidden sm:flex"
+        >
+          <Search className="w-4 h-4 text-muted-foreground" />
+          <input
+            placeholder="Search..."
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => setSearchFocused(false)}
+            className="bg-transparent text-sm outline-none w-full placeholder:text-muted-foreground"
+          />
+        </motion.div>
+
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: 15 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={toggleDarkMode}
+          className="clay-button p-2.5 rounded-xl text-muted-foreground hover:text-foreground"
+        >
+          <AnimatePresence mode="wait">
+            {darkMode ? (
+              <motion.div key="sun" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <Sun className="w-4 h-4" />
+              </motion.div>
+            ) : (
+              <motion.div key="moon" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <Moon className="w-4 h-4" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="clay-button p-2.5 rounded-xl text-muted-foreground hover:text-foreground relative"
+        >
+          <Bell className="w-4 h-4" />
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 500, delay: 0.5 }}
+            className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-accent"
+          />
+        </motion.button>
+
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          className="flex items-center gap-2.5 ml-1 clay-button px-2.5 py-1.5 rounded-xl cursor-pointer"
+        >
+          <Avatar className="h-8 w-8 ring-2 ring-primary/20">
+            <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" />
+            <AvatarFallback>AD</AvatarFallback>
+          </Avatar>
+          <div className="text-right hidden sm:block">
+            <p className="text-sm font-semibold text-foreground leading-none">Anna D.</p>
+            <p className="text-[11px] text-muted-foreground">Manager</p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.header>
+  );
+};
+
+export default TopNavbar;
+
+
+================================================================================
+File: src/components/AppSidebar.tsx
+================================================================================
+import {
+  LayoutDashboard,
+  Users,
+  Briefcase,
+  Globe,
+  User,
+  Settings,
+  ChevronDown,
+  Zap,
+} from "lucide-react";
+import { NavLink } from "@/components/NavLink";
+import { useLocation } from "react-router-dom";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { motion } from "framer-motion";
+
+const AppSidebar = () => {
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (path: string) => currentPath === path;
+  const isTalentsActive = currentPath.startsWith("/talents");
+
+  return (
+    <Sidebar collapsible="icon" className="border-r-0">
+      <SidebarContent className="py-4">
+        {/* Logo */}
+        <div className="px-4 mb-6 flex items-center gap-2.5">
+          <motion.div
+            className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center clay-button"
+            whileHover={{ rotate: 10 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Zap className="w-5 h-5 text-primary-foreground" />
+          </motion.div>
+          {!collapsed && (
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="font-bold text-lg text-foreground"
+              style={{ fontFamily: "'Quicksand', sans-serif" }}
+            >
+              TalentFlow
+            </motion.span>
+          )}
+        </div>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+            Main
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {/* Dashboard */}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <NavLink
+                    to="/"
+                    end
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all hover:bg-sidebar-accent"
+                    activeClassName="bg-sidebar-accent text-sidebar-accent-foreground font-semibold clay-card-sm"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    {!collapsed && <span>Dashboard</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              {/* Talents Hub */}
+              <Collapsible defaultOpen={isTalentsActive} className="group/collapsible">
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton className="flex items-center gap-3 px-3 py-2.5 rounded-xl w-full transition-all hover:bg-sidebar-accent">
+                      <Users className="w-4 h-4" />
+                      {!collapsed && (
+                        <>
+                          <span className="flex-1 text-left">Talents Hub</span>
+                          <ChevronDown className="w-3.5 h-3.5 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                        </>
+                      )}
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton asChild>
+                          <NavLink
+                            to="/talents/jobs"
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all hover:bg-sidebar-accent"
+                            activeClassName="bg-sidebar-accent text-sidebar-accent-foreground font-semibold"
+                          >
+                            <Briefcase className="w-3.5 h-3.5" />
+                            {!collapsed && <span>Job Hub</span>}
+                          </NavLink>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton asChild>
+                          <NavLink
+                            to="/talents/freelance"
+                            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all hover:bg-sidebar-accent"
+                            activeClassName="bg-sidebar-accent text-sidebar-accent-foreground font-semibold"
+                          >
+                            <Globe className="w-3.5 h-3.5" />
+                            {!collapsed && <span>Freelance Hub</span>}
+                          </NavLink>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
+
+              {/* Profile & Settings */}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <NavLink
+                    to="/profile"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all hover:bg-sidebar-accent"
+                    activeClassName="bg-sidebar-accent text-sidebar-accent-foreground font-semibold clay-card-sm"
+                  >
+                    <User className="w-4 h-4" />
+                    {!collapsed && <span>Profile & Settings</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
+
+export default AppSidebar;
+
+
+================================================================================
+File: src/components/ClayCard.tsx
+================================================================================
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+
+interface ClayCardProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const ClayCard = ({ children, className, delay = 0 }: ClayCardProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20, scale: 0.97 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+    whileHover={{ y: -4, boxShadow: "var(--clay-shadow-hover)", transition: { duration: 0.25, ease: "easeOut" } }}
+    className={cn("clay-card p-5", className)}
+  >
+    {children}
+  </motion.div>
+);
+
+export default ClayCard;
+
+
+================================================================================
+File: src/components/ComplianceCard.tsx
+================================================================================
+import { MoreVertical, AlertCircle, X } from "lucide-react";
+import ClayCard from "@/components/ClayCard";
+
+const ComplianceCard = () => {
+  return (
+    <ClayCard delay={0.15}>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="font-bold text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>Document Compliance</h3>
+        <button className="p-1 rounded-lg hover:bg-muted">
+          <MoreVertical className="w-4 h-4 text-muted-foreground" />
+        </button>
+      </div>
+
+      <div className="flex items-center justify-between text-sm mb-2">
+        <span className="font-semibold text-foreground">16%</span>
+        <span className="font-semibold text-foreground">62%</span>
+        <span className="font-semibold text-foreground">22%</span>
+      </div>
+
+      <div className="clay-inset flex h-3 rounded-full overflow-hidden mb-4 p-0.5">
+        <div className="bg-warning rounded-full" style={{ width: "16%" }} />
+        <div className="bg-destructive rounded-full ml-0.5" style={{ width: "62%" }} />
+        <div className="bg-primary rounded-full ml-0.5" style={{ width: "22%" }} />
+      </div>
+
+      <div className="flex justify-between text-xs mb-5">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-warning" />
+          <span className="font-bold text-foreground">5</span>
+          <span className="text-muted-foreground">Expired</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-destructive" />
+          <span className="font-bold text-foreground">23</span>
+          <span className="text-muted-foreground">Incomplete</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+          <span className="font-bold text-foreground">7</span>
+          <span className="text-muted-foreground">Invalid</span>
+        </div>
+      </div>
+
+      <div className="flex items-baseline gap-6 mb-4">
+        <div>
+          <span className="text-3xl font-extrabold text-foreground">421</span>
+          <span className="text-xs text-muted-foreground ml-1">Valid</span>
+        </div>
+        <div>
+          <span className="text-3xl font-extrabold text-foreground">48</span>
+          <span className="text-xs text-muted-foreground ml-1">Pending</span>
+        </div>
+      </div>
+
+      <div className="clay-inset p-3 flex items-start gap-2">
+        <AlertCircle className="w-4 h-4 text-warning mt-0.5 shrink-0" />
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Some docs are close to expiring or failed validation. Review now.
+        </p>
+        <button className="p-0.5 hover:bg-card rounded shrink-0">
+          <X className="w-3 h-3 text-muted-foreground" />
+        </button>
+      </div>
+    </ClayCard>
+  );
+};
+
+export default ComplianceCard;
+
+
+================================================================================
+File: src/components/FolderCard.tsx
+================================================================================
+import { Folder, ArrowUpRight } from "lucide-react";
+
+interface FolderCardProps {
+  title: string;
+  files: number;
+  size: string;
+}
+
+const FolderCard = ({ title, files, size }: FolderCardProps) => {
+  return (
+    <div className="bg-card rounded-xl border border-border p-4 hover:shadow-md transition-shadow cursor-pointer group">
+      <div className="flex items-start justify-between mb-3">
+        <div className="p-2 bg-muted rounded-lg">
+          <Folder className="w-5 h-5 text-muted-foreground" />
+        </div>
+        <button className="p-1.5 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-muted transition-all">
+          <ArrowUpRight className="w-4 h-4 text-muted-foreground" />
+        </button>
+      </div>
+      <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+      <p className="text-xs text-muted-foreground mt-0.5">{files} files · {size}</p>
+    </div>
+  );
+};
+
+export default FolderCard;
+
+
+================================================================================
+File: src/components/NavLink.tsx
+================================================================================
+import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";
+import { forwardRef } from "react";
+import { cn } from "@/lib/utils";
+
+interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
+  className?: string;
+  activeClassName?: string;
+  pendingClassName?: string;
+}
+
+const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
+  ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
+    return (
+      <RouterNavLink
+        ref={ref}
+        to={to}
+        className={({ isActive, isPending }) =>
+          cn(className, isActive && activeClassName, isPending && pendingClassName)
+        }
+        {...props}
+      />
+    );
+  },
+);
+
+NavLink.displayName = "NavLink";
+
+export { NavLink };
+
+
+================================================================================
+File: src/components/PageTransition.tsx
+================================================================================
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
+
+const PageTransition = ({ children }: { children: ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -8 }}
+    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+  >
+    {children}
+  </motion.div>
+);
+
+export default PageTransition;
+
+
+================================================================================
+File: src/components/RecentFilesTable.tsx
+================================================================================
+import { ArrowUpRight, Download, Search, Settings, ChevronDown, MoreVertical } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
+
+interface FileRow {
+  type: string;
+  fileId: string;
+  uploadedBy: string;
+  avatar: string;
+  date: string;
+  expiration: string;
+  source: string;
+  status: "Valid" | "Invalid";
+}
+
+const files: FileRow[] = [
+  { type: "Policy File", fileId: "#35698", uploadedBy: "Michael S.", avatar: "MS", date: "18-05-25", expiration: "18-05-30", source: "Uploaded by Agent", status: "Valid" },
+  { type: "Registration", fileId: "#35697", uploadedBy: "Sam W.", avatar: "SW", date: "16-05-25", expiration: "16-05-30", source: "Client", status: "Invalid" },
+  { type: "Policy File", fileId: "#35695", uploadedBy: "Liam Johnson", avatar: "LJ", date: "16-05-25", expiration: "16-05-30", source: "Uploaded by Agent", status: "Valid" },
+  { type: "Report", fileId: "#35694", uploadedBy: "Sophia Brown", avatar: "SB", date: "12-05-25", expiration: "12-05-30", source: "Auto-imported", status: "Invalid" },
+  { type: "Registration", fileId: "#35693", uploadedBy: "Mason Smith", avatar: "MS", date: "11-05-25", expiration: "11-05-30", source: "Client", status: "Valid" },
+  { type: "Policy File", fileId: "#35692", uploadedBy: "Olivia Davis", avatar: "OD", date: "08-05-25", expiration: "08-05-30", source: "Uploaded by Agent", status: "Valid" },
+];
+
+const columns = ["Type", "File ID", "Uploaded by", "Date", "Expiration", "Source", "Status"];
+
+const RecentFilesTable = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.4 }}
+      className="clay-card"
+    >
+      <div className="flex items-center justify-between px-5 pt-5 pb-3">
+        <div className="flex items-center gap-2">
+          <h3 className="font-bold text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>Recent Files</h3>
+          <button className="p-1 rounded-lg hover:bg-muted">
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground" />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between px-5 pb-3">
+        <div className="flex items-center gap-2">
+          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="clay-button flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-semibold">
+            <Download className="w-3.5 h-3.5" /> Import
+          </motion.button>
+          <button className="clay-button px-3 py-1.5 text-xs font-medium text-foreground rounded-lg bg-card">Renew</button>
+          <button className="clay-button px-3 py-1.5 text-xs font-medium text-foreground rounded-lg bg-card">Complete</button>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="clay-inset flex items-center gap-2 px-3 py-1.5 rounded-lg">
+            <Search className="w-3.5 h-3.5 text-muted-foreground" />
+            <input placeholder="Search.." className="bg-transparent text-xs outline-none w-24 placeholder:text-muted-foreground" />
+          </div>
+          <button className="clay-button flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-foreground bg-card">
+            Sort by <ChevronDown className="w-3 h-3" />
+          </button>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-t border-border">
+              <th className="w-8 px-5 py-2.5"><input type="checkbox" className="rounded border-border" /></th>
+              {columns.map((col) => (
+                <th key={col} className="px-3 py-2.5 text-left font-semibold text-muted-foreground whitespace-nowrap">
+                  <span className="flex items-center gap-1">{col} <ChevronDown className="w-3 h-3" /></span>
+                </th>
+              ))}
+              <th className="w-8 px-3 py-2.5">
+                <Settings className="w-3.5 h-3.5 text-muted-foreground" />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {files.map((file, i) => (
+              <motion.tr
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.25 + i * 0.04 }}
+                className="border-t border-border hover:bg-muted/30 transition-colors"
+              >
+                <td className="px-5 py-3"><input type="checkbox" className="rounded border-border" /></td>
+                <td className="px-3 py-3 font-semibold text-foreground">{file.type}</td>
+                <td className="px-3 py-3 text-muted-foreground">{file.fileId}</td>
+                <td className="px-3 py-3">
+                  <div className="flex items-center gap-2">
+                    <Avatar className="h-5 w-5">
+                      <AvatarFallback className="text-[9px] bg-primary/10 text-primary font-bold">{file.avatar}</AvatarFallback>
+                    </Avatar>
+                    <span className="text-foreground">{file.uploadedBy}</span>
+                  </div>
+                </td>
+                <td className="px-3 py-3 text-muted-foreground">{file.date}</td>
+                <td className="px-3 py-3 text-muted-foreground">{file.expiration}</td>
+                <td className="px-3 py-3 text-muted-foreground">{file.source}</td>
+                <td className="px-3 py-3">
+                  <span className={`inline-flex items-center gap-1 text-xs font-semibold ${file.status === "Valid" ? "text-success" : "text-destructive"}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${file.status === "Valid" ? "bg-success" : "bg-destructive"}`} />
+                    {file.status}
+                  </span>
+                </td>
+                <td className="px-3 py-3">
+                  <button className="p-1 rounded-lg hover:bg-muted">
+                    <MoreVertical className="w-3.5 h-3.5 text-muted-foreground" />
+                  </button>
+                </td>
+              </motion.tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </motion.div>
+  );
+};
+
+export default RecentFilesTable;
+
+
+================================================================================
+File: src/components/StorageCard.tsx
+================================================================================
+import { MoreVertical } from "lucide-react";
+import { motion } from "framer-motion";
+
+const StorageCard = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.25, duration: 0.4 }}
+      className="bg-storage text-storage-foreground rounded-2xl p-5"
+      style={{ boxShadow: "8px 8px 20px hsl(250 30% 12%), -4px -4px 12px hsl(250 30% 28%)" }}
+    >
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="font-bold" style={{ fontFamily: "'Quicksand', sans-serif" }}>Storage Usage</h3>
+        <button className="p-1 rounded-lg hover:bg-white/10">
+          <MoreVertical className="w-4 h-4" />
+        </button>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <div className="relative w-28 h-28 shrink-0">
+          <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(250 20% 30%)" strokeWidth="12" />
+            <motion.circle
+              cx="50" cy="50" r="40" fill="none" stroke="hsl(250 70% 65%)" strokeWidth="12"
+              strokeDasharray={`${0.12 * 251.2} ${251.2}`} strokeLinecap="round"
+              initial={{ strokeDashoffset: 251.2 }} animate={{ strokeDashoffset: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            />
+            <motion.circle
+              cx="50" cy="50" r="40" fill="none" stroke="hsl(155 60% 50%)" strokeWidth="12"
+              strokeDasharray={`${0.07 * 251.2} ${251.2}`} strokeDashoffset={`${-0.12 * 251.2}`} strokeLinecap="round"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+            />
+            <motion.circle
+              cx="50" cy="50" r="40" fill="none" stroke="hsl(38 85% 58%)" strokeWidth="12"
+              strokeDasharray={`${0.06 * 251.2} ${251.2}`} strokeDashoffset={`${-0.19 * 251.2}`} strokeLinecap="round"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
+            />
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-2xl font-extrabold">25%</span>
+            <span className="text-[10px] opacity-70">124 GB</span>
+            <span className="text-[9px] opacity-50">of 500GB</span>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 text-xs">
+          {[
+            { color: "hsl(250,70%,65%)", pct: "12%", size: "60 GB", label: "Policy Files" },
+            { color: "hsl(155,60%,50%)", pct: "7%", size: "35 GB", label: "Registrations" },
+            { color: "hsl(38,85%,58%)", pct: "6%", size: "30 GB", label: "Reports" },
+          ].map((item) => (
+            <div key={item.label}>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: item.color }} />
+                <span className="opacity-80">{item.pct} · {item.size}</span>
+              </div>
+              <p className="text-[11px] opacity-55 ml-[18px]">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default StorageCard;
+
+
+================================================================================
+                     NOTE: UI component files (src/components/ui/*)
+                     are standard shadcn/ui components and are not
+                     included here to keep this document concise.
+                     They can be regenerated via shadcn CLI.
+================================================================================
+
+                              END OF SOURCE CODE
+================================================================================

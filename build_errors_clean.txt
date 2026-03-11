@@ -1,0 +1,9 @@
+﻿src/components/AppSidebar.tsx(17,5): error TS6133: 'SidebarGroupContent' is declared but its value is never read.
+src/components/ui/collapsible.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/progress.tsx(4,36): error TS2307: Cannot find module '@radix-ui/react-progress' or its corresponding type declarations.
+src/components/ui/scroll-area.tsx(43,30): error TS2551: Property 'ScrollbarThumb' does not exist on type 'typeof import("C:/Users/dharu/Downloads/work/node_modules/@radix-ui/react-scroll-area/dist/index")'. Did you mean 'ScrollAreaThumb'?
+src/components/ui/separator.tsx(4,37): error TS2307: Cannot find module '@radix-ui/react-separator' or its corresponding type declarations.
+src/components/ui/sidebar.tsx(3,10): error TS1484: 'VariantProps' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ui/sidebar.tsx(13,7): error TS6133: 'SIDEBAR_WIDTH_MOBILE' is declared but its value is never read.
+src/components/ui/sidebar.tsx(163,46): error TS6133: 'setOpenMobile' is declared but its value is never read.
+src/components/ui/sidebar.tsx(537,15): error TS6198: All destructured elements are unused.
